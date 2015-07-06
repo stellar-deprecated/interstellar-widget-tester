@@ -1,0 +1,33 @@
+<div ng-controller="interstellar-test-app.IntentsWidgetController as widget">
+  <h1>Intents</h1>
+
+  <div>
+    <h2>Send Intent</h2>
+    <select ng-model="widget.type">
+      <option ng-repeat="(key, value) in widget.types" ng-value="key">{{key}}</option>
+    </select><br />
+    Data JSON:<br />
+    <textarea ng-model="widget.data"></textarea><br />
+    <button ng-click="widget.broadcast()">Send!</button>
+
+    <div ng-if="widget.receivedIntents.length">
+      <h2>Received Intents</h2>
+      <table border="1">
+        <thead>
+          <tr>
+            <td>Time</td>
+            <td>Type</td>
+            <td>Data</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="broadcast in widget.receivedIntents | orderBy:'time':true">
+            <td>{{broadcast.time | date:'H:mm:ss'}}</td>
+            <td>{{broadcast.intent.type}}</td>
+            <td>{{broadcast.intent.data}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

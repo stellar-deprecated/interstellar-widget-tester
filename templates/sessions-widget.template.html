@@ -1,0 +1,27 @@
+<div ng-controller="interstellar-test-app.SessionsWidgetController as widget">
+  <h1>Sessions</h1>
+
+  <div ng-if="widget.session">
+    <h2>Default session</h2>
+    <p>
+      Username: {{widget.session.username}}<br />
+      Address: {{widget.session.address}}<br />
+      Secret:
+      <span ng-if="!widget.secretVisible">************ <a href="#" ng-click="widget.secretVisible = true">show</a></span>
+      <span ng-if="widget.secretVisible">{{widget.session.secret}}  <a href="#" ng-click="widget.secretVisible = false">hide</a></span><br />
+      <a href="#" ng-click="widget.friendbot()">Friendbot</a> <span ng-if="widget.friendbotSent">Transaction sent</span>
+      <a href="#" ng-click="widget.destroy()">Destroy</a>
+    </p>
+  </div>
+
+  <div ng-if="!widget.session">
+    <h2>Create session</h2>
+    <form>
+      Username: <input type="text" placeholder="username" ng-model="widget.username" /><br />
+      Secret: <input type="text" placeholder="secret" ng-model="widget.secret" /><br />
+      Data: <br />
+      <textarea ng-model="widget.data"></textarea><br />
+      <button ng-click="widget.create()">Create</button>
+    </form>
+  </div>
+</div>

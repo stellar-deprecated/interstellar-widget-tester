@@ -1,0 +1,164 @@
+/* header */
+
+// solar-library-bundle
+@import "solar-css/lib/index";
+// @import "solar-stellarorg/lib/index"; // uncomment to see how solar-stellarorg theme impacts the styles
+
+// solar-css-bundle
+@import "solar-css/styles/index";
+// @import "solar-stellarorg/styles/index"; // uncomment to see how solar-stellarorg theme impacts the styles
+
+// app-dashboard
+// it is position fixed so that the header bar doesn't cover things up on mobile
+html {
+  // overflow: hidden; // disable elastic scrolling
+}
+.app-dashboard-webApp {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  @include S-flex-col;
+}
+.app-dashboard-webApp__header {
+  @include S-flex-rowWrap;
+}
+.app-dashboard-webApp__footer {
+  margin-top: 1px; // same size as the border so that the scroll content doesn't cover border
+}
+.app-dashboard-webApp__header__row {
+  @include S-flexItem-full;
+  @include S-flex-row;
+  justify-content: space-between;
+  border-bottom: 1px solid $s-color-primary;
+}
+.app-dashboard-headerSecondary {
+  @include S-flexItem-none;
+  align-self: center;
+  margin-right: $s-spacing-widgetPadding;
+  font-size: $s-scale-down1;
+}
+
+// Dropdown section of header
+.app-headerDropdown {
+  position: relative;
+
+  @include S-flexItem-full;
+  width: 100%;
+}
+.app-headerDropdown__content {
+  border-bottom: 1px solid $s-color-primary;
+}
+.app-headerDropdown-row {
+  @include S-flex-row;
+  align-items: center;
+  min-height: 2.5em;
+}
+.app-headerDropdown-row--padded {
+  padding: 0 $s-spacing-widgetPadding;
+}
+.app-headerDropdown-row--bordered {
+  border-top: 1px solid $s-color-F;
+}
+
+// widgets currently used in dropdown header
+.app-miniWidget-walletAddress {
+  padding: $s-spacing-widgetPadding;
+}
+.app-miniWidget-walletAddress-address {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 85%;
+}
+.app-miniWidget-balances {
+  padding: 0 $s-spacing-widgetPadding 1em $s-spacing-widgetPadding;
+}
+.app-miniWidget-balances__balance {
+  @include S-flex-row;
+  justify-content: space-between;
+  border-top: 1px solid $s-color-F;
+  padding: 0;
+}
+
+.app-dashboard-webApp__content {
+  flex: 1;
+  height: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.app-dashboard-tabBar {
+  z-index: 1;
+  @include S-flex-row;
+  border-top: 1px solid $s-color-primary;
+  background: #fff;
+}
+.app-dashboard-tabBar__item {
+  flex: 12;
+  list-style-type: none;
+}
+.app-dashboard-tabBar__item__a {
+  display: block;
+  width: 100%;
+  border-bottom: 4px solid transparent;
+  line-height: $s-scale-up3raw;
+
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+}
+.app-dashboard-tabBar__item__a:hover {
+  border-bottom: 4px solid $s-color-primary;
+}
+.app-dashboard-tabBar__item__a.is-active {
+  border-bottom: 4px solid $s-color-primary;
+}
+
+// branding logo (stellar)
+.app-branding {
+  display: block;
+  padding: 0 $s-spacing-widgetPadding; // TODO: improve story around spacing
+
+  font-size: $s-scale-2;
+  line-height: 2em;
+  text-transform: lowercase;
+  color: $s-color-primary;
+}
+.app-branding__text {
+  text-decoration: none;
+}
+
+// builds on top of K-webApp
+.app-pageCenter {
+  @include S-flex-col;
+  justify-content: space-around;
+}
+.app-pageCenter__centered {
+  @include S-flexItem-none;
+}
+
+// login screen
+.app-login-title {
+  padding: 0 $s-spacing-widgetPadding;
+}
+.app-login-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.app-login-form .s-button {
+  width: 100%;
+}
+
+// balances screen
+.app-balances-container {
+  padding-top: 2em;
+}
+.app-balances-title {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+// transfer screen
+.app-transfer-container {
+}
